@@ -15,16 +15,18 @@ function filter(from, to, step) {
   if (from <= to) {
     if (step != 0) {
       for (let i = from; i <= to; i += step) {
-        j++;
+
         arrayResult[j] = i;
-        console.log(i);
+        j++;
+        //console.log(i);
       }
     } else { return console.log("error: step is 0") }
   } else { return console.log("error: unreachable") }
+  console.log(arrayResult)
   return arrayResult;
 }
 
-//filter(-3, 15, 1);
+//filter(-1, -10, 1);
 
 // Напиши функцию, которая на вход принимает массив чисел и возвращает информацию: какие элементы в массиве есть и сколько раз они встречаются.
 // Пример:
@@ -38,14 +40,21 @@ function filter(from, to, step) {
 function getLetters(array) {
   let resultArray = [];
   let uniqueArray = [];
-  let count=0;
+  let count = 0;
   for (let value of array) {
     if (!uniqueArray.includes(value)) {
       uniqueArray.push(value);
-      count=1;
-      console.log(uniqueArray)
-      
+      console.log(value)
     }
   }
+  for (let uniqValue of uniqueArray) {
+    for (let value of array) {
+      if (uniqValue == value) {
+        count++;
+      }
+    } 
+    console.log(uniqValue, ": ", count);
+    count = 0;
+  }
 }
-getLetters([5,5,5,3,4,2,5,6,32,432,7,5,23])
+getLetters([6, 4, 9, -30, 6, 9, 9])
